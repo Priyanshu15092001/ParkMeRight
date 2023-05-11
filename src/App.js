@@ -14,6 +14,10 @@ import {
 import MainBody from "./components/MainBody";
 import AdminHome from "./components/AdminHome";
 import AdminCustomer from "./components/AdminCustomer";
+import AdminLocation from "./components/AdminLocation";
+import AdminRate from "./components/AdminRate";
+import AdminVehicle from "./components/AdminVehicle";
+import AdminBooking from "./components/AdminBooking";
 
 
 function App() {
@@ -30,6 +34,11 @@ function App() {
       <Route exact path="/MainBody" element={<MainBody/>}></Route>
       <Route exact path="/AdminHome" element={<AdminHome/>}></Route>
       <Route exact path="/AdminCustomer" element={<AdminCustomer/>}></Route>
+      <Route exact path="/AdminLocation" element={<AdminLocation/>}></Route>
+      <Route exact path="/AdminRate" element={<AdminRate/>}></Route>
+      <Route exact path="/AdminVehicle" element={<AdminVehicle/>}></Route>
+      <Route exact path="/AdminBooking" element={<AdminBooking/>}></Route>
+
 
       </Routes>
       

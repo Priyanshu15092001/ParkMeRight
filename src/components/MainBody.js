@@ -5,7 +5,7 @@ export default function MainBody() {
     <div >
       
       <div className="mapouter">
-      <nav className="navbar navbar-expand-lg  " style={{ height: "7vh" ,}}>
+      <nav className="navbar navbar-expand-lg  " style={{ height: "7vh" ,marginTop:'3cm'}}>
         <div className="container-fluid">
           <button
             className="navbar-toggler"

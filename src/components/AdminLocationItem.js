@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-export default function AdminCustomerItem(props) {
+function AdminLocationItem(props) {
   const deleteCust=async(id)=>{
-    let response = await fetch(`http://localhost:5000/api/auth/deletecust/${id}`, {
+    let response = await fetch(`http://localhost:5000/api/locrate/deletelocrate/${id}`, {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
 
       headers: {
@@ -14,18 +14,33 @@ export default function AdminCustomerItem(props) {
     let parseData = await response.json();
     // setloading(false);
     console.log(parseData);
-    
   }
+
+const updateCust=()=>{
+  
+}
+
   return (
-    <>
+    
+        <>
       <th scope="row">{props.hash}</th>
       <td>{props._id}</td>
       <td>{props.name}</td>
-      <td>{props.email}</td>
-      <td>{props.phone}</td>
+      <td>{props.address}</td>
+      <td>{props.latitude}</td>
+      <td>{props.longitude}</td>
+      <td>{props.slots2W}</td>
+      <td>{props.slots4W}</td>
+
       <td>
         <i className="fa-solid fa-trash mx-2" onClick={()=>deleteCust(props._id)}></i>
       </td>
+      <td>
+      <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{updateCust(props._id)}}></i>
+      </td>
     </>
-  );
+    
+  )
 }
+
+export default AdminLocationItem

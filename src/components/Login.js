@@ -49,10 +49,10 @@ export default function Login() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         maxHeight: "100vh",
-        height: "93vh",
+        height: "100vh",
         overflowY: "hidden",
         width: "auto",
-        paddingTop: "2cm",
+        paddingTop: "3cm",
       }}
     >
       {/* <button type="button" className="btn btn-outline-info" style={{marginTop:'-3.63cm',marginLeft:'36cm',width:'2cm'}}>Admin</button>

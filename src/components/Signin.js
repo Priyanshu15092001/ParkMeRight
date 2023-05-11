@@ -57,10 +57,10 @@ const [err, seterr] = useState("")
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         maxHeight: "100vh",
-        height: "93vh",
+        height: "100vh",
         overflowY: "hidden",
         width: "auto",
-        paddingTop: "2cm",
+        paddingTop: "3cm",
       }}
     >
       <div className="container" style={{ marginLeft: "-200px" }}>

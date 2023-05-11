@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Spinner from "./Spinner";
 import AdminCustomerItem from "./AdminCustomerItem";
-
+import '../style.css'
 function AdminCustomer() {
   var num=1;
   const [data, setData] = useState([]);
-  const [loading, setloading] = useState(false);
+
 
   useEffect(() => {
     fetchData();
@@ -29,10 +27,10 @@ function AdminCustomer() {
   };
 
   return (
-    <div  style={{height:'100vh',maxHeight:'100vh',paddingTop:'3cm',backgroundColor:' #80daeb '}}>
+    <div  style={{height:'100vh',maxHeight:'100vh',paddingTop:'3cm'}}>
     
 
-    <div className="container my-10" style={{backgroundColor:' #80daeb '}}>
+    <div className="container my-10" >
     <h3 >Total Customer:{data.length}</h3>
       <table className=" table table-striped table-hover  " style={{backgroundColor:'#80daeb ',color:"black"}}>
         <thead>
@@ -54,6 +52,7 @@ function AdminCustomer() {
                   name={element.name}
                   email={element.email}
                   phone={element.phone}
+                  fetchData={fetchData}
                 />
               </tr>
             );
