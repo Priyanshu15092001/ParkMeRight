@@ -24,7 +24,6 @@ const updateCust=()=>{
     
         <>
       <th scope="row">{props.hash}</th>
-      <td>{props._id}</td>
       <td>{props.name}</td>
       <td>{props.address}</td>
       <td>{props.latitude}</td>

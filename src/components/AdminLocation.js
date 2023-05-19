@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AdminLocationItem from './AdminLocationItem';
 import "../style.css"
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminLocation() {
 
@@ -11,8 +12,10 @@ var slot4W=0;
 var num=1;
 
 const [locdata, setlocData] = useState([]);
-
+const navigate=useNavigate()
 useEffect(() => {
+  if(!localStorage.getItem("adtoken"))
+     { navigate("/");}
   fetchData();
 }, []);
 
@@ -23,8 +26,7 @@ const fetchData = async () => {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
 
     headers: {
-      "Content-Type": "application/json",
-      "auth-token": localStorage.getItem("adtoken"),
+      "Content-Type": "application/json"
     },
   });
   let parseData = await response.json();
@@ -95,6 +97,9 @@ const fetchData = async () => {
     });
     const json2 = await response2.json();
     console.log(json2);
+
+
+    setData({ location:"",address:"",latitude:0,longitude:0,twoWheeler:-1,rate2W:0,fourWheeler:-1,rate4W:0 })
   }
 
 fetchData()
@@ -113,8 +118,8 @@ fetchData()
 
 
   return (
-    <>
-    <div className='container ' style={{paddingTop:'2cm'}}>
+    <div className='pic'>
+    <div className='container' >
         <form className="row g-3" onSubmit={handleSubmit}>
   <div className="col-12">
     <label htmlFor="location" className="form-label">Location</label>
@@ -159,11 +164,10 @@ fetchData()
 
 <div className='container my-10' style={{paddingTop:'1cm'}}>
 <h3 >Total Locations:{locdata.length}</h3>
-      <table className=" table table-striped table-hover  " style={{backgroundColor:'#80daeb ',color:"black"}}>
+      <table className=" table table-striped table-hover  " style={{color:"black"}}>
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">Latitude</th>
@@ -179,7 +183,6 @@ fetchData()
               <tr key={element._id}>
                 <AdminLocationItem
                   hash={num++}
-                  _id={element._id}
                   name={element.name}
                   address={element.address}
                   latitude={element.latitude}
@@ -194,6 +197,6 @@ fetchData()
         </tbody>
       </table>
 </div>
-</>
+</div>
   )
 }

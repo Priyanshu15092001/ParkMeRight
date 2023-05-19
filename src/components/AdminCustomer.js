@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import AdminCustomerItem from "./AdminCustomerItem";
 import '../style.css'
+import { useNavigate } from "react-router-dom";
 function AdminCustomer() {
   var num=1;
   const [data, setData] = useState([]);
-
+const navigate=useNavigate()
 
   useEffect(() => {
+    if(!localStorage.getItem("adtoken"))
+     { navigate("/");}
     fetchData();
   }, []);
 
@@ -27,12 +30,12 @@ function AdminCustomer() {
   };
 
   return (
-    <div  style={{height:'100vh',maxHeight:'100vh',paddingTop:'3cm'}}>
+    <div  className="pic">
     
 
     <div className="container my-10" >
     <h3 >Total Customer:{data.length}</h3>
-      <table className=" table table-striped table-hover  " style={{backgroundColor:'#80daeb ',color:"black"}}>
+      <table className=" table table-striped table-hover  " style={{color:"black"}}>
         <thead>
           <tr>
             <th scope="col">#</th>

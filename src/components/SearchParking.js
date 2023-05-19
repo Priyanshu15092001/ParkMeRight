@@ -5,51 +5,11 @@ export default function SearchParking() {
   return (
     <div
       style={{
-        backgroundImage: `url(${img})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        maxHeight: "100vh",
-        height: "93vh",
-        overflowY: "hidden",
-        width: "auto",
-        paddingTop: "2cm",
+        height: "100vh",
+        paddingTop: "3cm",
       }}
     >
-      <nav className="navbar navbar-expand-lg  " style={{ height: "7vh" }}>
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className="collapse navbar-collapse justify-content-center "
-            id="navbarSupportedContent"
-            style={{ marginTop: "-4cm" }}
-          >
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                style={{ width: "10cm" }}
-              />
-              <Link className="nav-link" to="/SearchParking">
-                <button className="btn btn-outline-info" type="submit">
-                  Search
-                </button>
-              </Link>
-            </form>
-          </div>
-        </div>
-      </nav>
+    
       <div
         className="my-3 d-flex  justify-content-evenly"
         style={{ marginLeft: "4cm" }}

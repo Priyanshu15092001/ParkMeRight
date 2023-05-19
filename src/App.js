@@ -1,10 +1,11 @@
-import "./App.css";
+// import "./App.css";
 import Login from "./components/Login";
 import Signin from "./components/Signin";
 import Admin from "./components/Admin";
 import Navbar from "./components/Navbar";
 import BookingSystem from "./components/BookingSystem";
 import SearchParking from "./components/SearchParking";
+import MyBookings from "./components/MyBookings";
 
 import {
   BrowserRouter as Router,
@@ -18,8 +19,10 @@ import AdminLocation from "./components/AdminLocation";
 import AdminRate from "./components/AdminRate";
 import AdminVehicle from "./components/AdminVehicle";
 import AdminBooking from "./components/AdminBooking";
-
-
+import PreviousBookings from "./components/PreviousBookings";
+import Profile from "./components/Profile";
+import About from "./components/About";
+import ContactUs from "./components/ContactUs";
 function App() {
   return (
     <>
@@ -38,6 +41,14 @@ function App() {
       <Route exact path="/AdminRate" element={<AdminRate/>}></Route>
       <Route exact path="/AdminVehicle" element={<AdminVehicle/>}></Route>
       <Route exact path="/AdminBooking" element={<AdminBooking/>}></Route>
+      <Route exact path="/MyBookings" element={<MyBookings/>}></Route>
+      <Route exact path="/PreviousBookings" element={<PreviousBookings/>}></Route>
+      <Route exact path="/Profile" element={<Profile/>}></Route>
+      <Route exact path="/About" element={<About/>}></Route>
+      <Route exact path="/ContactUs" element={<ContactUs/>}></Route>
+      
+
+
 
 
       </Routes>

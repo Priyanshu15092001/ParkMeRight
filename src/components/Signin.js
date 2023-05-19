@@ -173,7 +173,7 @@ const [err, seterr] = useState("")
           <div>
             <h6 style={{color:"red",padding:"2px"}}>{err}</h6>
           </div>
-          <Link className="nav-link" to="/Login">
+          <Link className="nav-link" to="/">
             <h6
               style={{ color: "whitesmoke", opacity: "0.8", marginLeft: "3px" }}
             >

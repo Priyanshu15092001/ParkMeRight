@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminRateItem(props) {
+  const[data, setData]=useState({})
 //   const deleteCust=async(id)=>{
 //     let response = await fetch(`http://localhost:5000/api/auth/deletecust/${id}`, {
 //       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
@@ -16,11 +18,26 @@ export default function AdminRateItem(props) {
 //     console.log(parseData);
     
 //   }
+const navigate=useNavigate()
+useEffect(() => {
+  if(!localStorage.getItem("adtoken"))
+  { navigate("/");}
+   fetchLocation(props.id);
+ }, []); 
+
+const fetchLocation=async(id)=>{
+  let response = await fetch(`http://localhost:5000/api/location/getlocationid/${id}`, {
+    method:'GET'
+ });
+ const json=await response.json();
+//  console.log(json)
+ setData(json)
+}
   return (
     <>
       <th scope="row">{props.hash}</th>
-      <td>{props._id}</td>
-      <td>{props.location}</td>
+      
+      <td>{data.name}</td>
       <td>{props.rate}</td>
       <td>{props.vehicleType}</td>
       {/* <td>

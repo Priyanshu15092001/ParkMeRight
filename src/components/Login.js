@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../images/parkingLot.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const host = "http://localhost:5000";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [err, seterr] = useState("");
   const navigate = useNavigate();
-
+// useEffect(()=>{
+//   localStorage.clear();
+//   sessionStorage.clear()
+// })
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(`${host}/api/auth/login`, {
@@ -128,6 +131,12 @@ export default function Login() {
           </form>
           <div>
             <h6 style={{ color: "red", padding: "2px" }}>{err}</h6>
+            <Link className="nav-link" to="/Signin">
+            <h6
+              style={{ color: "whitesmoke", opacity: "0.8", marginLeft: "3px" }}
+            >
+              Don't Hava A Account? Signup
+            </h6></Link>
             <h6
               style={{ color: "whitesmoke", opacity: "0.8", marginLeft: "3px" }}
             >

@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import AdminBookingItem from './AdminBookingItem';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminBooking() {
-
+const navigate=useNavigate()
     var num=1;
     const [data, setData] = useState([]);
    
-   
+
+    
     useEffect(() => {
+      if(!localStorage.getItem("adtoken"))
+     { navigate("/");}
       fetchData();
     }, []);
    
@@ -28,19 +32,19 @@ export default function AdminBooking() {
     };
 
   return (
-    <div  style={{height:'100vh',maxHeight:'100vh',paddingTop:'3cm'}}>
+    <div className='pic' style={{height:'100vh',maxHeight:'100vh',paddingTop:'3cm',paddingRight:'2cm'}}>
     
 
-    <div className="container my-10" >
+    <div className="container" >
     <h3 >Total Bookings:{data.length}</h3>
-      <table className=" table table-striped table-hover  " style={{backgroundColor:'#80daeb ',color:"black"}}>
+      <table className=" table table-striped table-hover  " style={{color:"black"}}>
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">ID</th>
-            <th scope="col">CustomerID</th>
-            <th scope="col">LocationID</th>
-            <th scope="col">VehicleID</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Location</th>
+            <th scope="col">Vehicle</th>
             <th scope="col">StartTime</th>
 
             <th scope="col">Duration</th>

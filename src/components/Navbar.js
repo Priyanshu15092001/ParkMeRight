@@ -7,6 +7,7 @@ export default function Navbar() {
     localStorage.removeItem("token");
     
     navigate("/")
+    
   }
 
   const handleAdminLogout=()=>{
@@ -19,8 +20,9 @@ export default function Navbar() {
   {console.log(localStorage.getItem("adtoken"))
     return(
     <>
-    <nav className="navbar navbar-expand-lg fixed-top navbar-dark" style={{  backgroundColor:' #1f1f2e',height:'7vh'}}>
+    <nav className="navbar navbar-expand-lg fixed-top navbar-dark" style={{  backgroundColor:' #031859',height:'7vh'}}>
   <div className="container-fluid" >
+    <Link className="navbar-brand" >ParkMe Right</Link>
     
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -28,7 +30,7 @@ export default function Navbar() {
     <div className="collapse navbar-collapse"  id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" >Home</Link>
+          <Link className="nav-link active" aria-current="page" to="/AdminHome">Home</Link>
         </li>
         <li className="nav-item">
          <Link  className="nav-link active" to="/AdminCustomer">Customers </Link>
@@ -59,10 +61,11 @@ export default function Navbar() {
   return (
    
     <nav
-      className="navbar fixed-top navbar-expand-lg  "
-      style={{  backgroundColor:' #1f1f2e',height:'7vh'}}
+      className="navbar fixed-top navbar-expand-lg navbar-dark "
+      style={{  backgroundColor:' #031859',height:'7vh'}}
     >
       <div className="container-fluid">
+       <Link className="navbar-brand" >ParkMe Right</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -76,7 +79,20 @@ export default function Navbar() {
         </button>
        
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-       {!localStorage.getItem("token")?<> <Link className="nav-link" to='/Admin'>
+       {!localStorage.getItem("token")?<>
+
+       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+          <Link className="nav-link active" to="/About">About us</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link active" to="/ContactUs">Contact Us</Link>
+        </li>
+        </ul>
+
+
+        <Link className="nav-link" to='/Admin'>
+       
           <button
             className="btn btn-outline-info "
             type="button"
@@ -105,7 +121,26 @@ export default function Navbar() {
           >
             Login
           </button>
-          </Link></>:<button className="btn btn-outline-info" onClick={handleLogout}>Logout</button>}
+          </Link></>:<>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+          <Link className="nav-link active" to="/MainBody">Home</Link>
+        </li>
+        <li className="nav-item">
+         <Link  className="nav-link active" to="/Profile">Profile</Link>
+        </li>
+        
+        
+        <li className="nav-item">
+          <Link className="nav-link active" to="/MyBookings">Current Bookings</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link active" to="/PreviousBookings">Previous Bookings</Link>
+        </li>
+       
+      </ul>
+          <button className="btn btn-outline-info " onClick={handleLogout}>Logout</button>
+         </>}
         </div>
       </div>
     </nav>
