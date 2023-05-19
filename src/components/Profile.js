@@ -53,29 +53,29 @@ setData({id:json._id,name:json.name,email:json.email,phone:json.phone})
     return (
       <div className="user" style={{backgroundColor:"	#6387A6",height:'100vh'}}>
       <h1 style={{color:"#00e673", textAlign:"center"}}>Hey There!</h1>
-      <div className="card1 mb-3" style={{background:"linear-gradient(to right, #6600ff 0%, #ff6699 100%)"}}>
+      <div className="card1 mb-3" style={{}}>
       <div className="row g-0">
-        <div className="col-md-4">
+        <div className="col-md-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , border: '2px solid blue', backgroundColor:"#ffd633",margin:'30px auto',padding:'20px' }}>
           <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000" className="img-fluid rounded-start" alt="..."/>
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title" style={{textAlign:"center"}}>Your Profile</h5>
+            <h5 className="card-title" style={{textAlign:"center", color:"#ffd633"}}>Your Profile</h5>
             <form>
   
-    <div className="mb-3">
+    <div className="mb-3" style={{border: '2px solid blue', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <label htmlFor="name" className="form-label"></label>
       <input type="text" id="name" name='name' className="form-control" value={data.name} onChange={onChange} placeholder="Enter Your Name"/>
     </div>
-    <div className="mb-3">
+    <div className="mb-3" style={{border: '2px solid blue', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <label htmlFor="email" className="form-label"></label>
-      <input type="text" id="email" name='email' className="form-control" value={data.email} onChange={onChange} placeholder="Address"/>
+      <input type="text" id="email" name='email' className="form-control" value={data.email} onChange={onChange} placeholder="Address" disabled/>
     </div>
-    <div className="mb-3">
+    <div className="mb-3" style={{border: '2px solid blue', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <label htmlFor="phone" className="form-label"></label>
       <input type="text" id="phone" name='phone' className="form-control" value={data.phone} onChange={onChange} placeholder="Phone Number"/>
     </div>
-    <button type="submit" className="btn btn1 btn-dark" onClick={handleSubmit}>Edit</button>
+    <button type="submit" className="btn btn1 btn-dark" style={{border:'3px solid blue', backgroundColor:"black"}} onClick={handleSubmit}>Edit</button>
   
 </form>
 

@@ -5,10 +5,14 @@
     padding: 40px;
     left: 390px;
     position: absolute;
-    border-radius: 10%;
     background-repeat: no-repeat;
     background-size: cover;
+    border: 3px solid white;
+    border-radius: 5%;
+    background: rgb(58,20,130);
+background: linear-gradient(0deg, rgba(58,20,130,1) 0%, rgba(26,54,162,1) 100%);
 }
+
 
 .btn1{
     border-color: rgb(124, 24, 79);

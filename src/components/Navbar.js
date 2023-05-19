@@ -135,7 +135,7 @@ export default function Navbar() {
           <Link className="nav-link active" to="/MyBookings">Current Bookings</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" to="/PreviousBookings">Previous Bookings</Link>
+          <Link className="nav-link active" to="/PreviousBookings">All Bookings</Link>
         </li>
        
       </ul>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AdminLocationItem from './AdminLocationItem';
 import "../style.css"
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ export default function AdminLocation() {
 
   const host = "http://localhost:5000";
   const [data, setData] = useState({ location:"",address:"",latitude:0,longitude:0,twoWheeler:-1,rate2W:0,fourWheeler:-1,rate4W:0 });
+  const [data1,setData1]=useState()
 var slot2W=0;
 var slot4W=0;
 var num=1;
@@ -115,9 +116,93 @@ fetchData()
   };
 
 
+  const editCust=async(id,name,address,latitude,longitude,slots2W,slots4W)=>{
+    const response = await fetch(`http://localhost:5000/api/location/admin/updateloc/${id}`, {
+      method: "PUT", // *GET, POST, PUT, DELETE, etc.
 
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("adtoken"),
+      },
+      body: JSON.stringify({ name,address,latitude,longitude,slots2W,slots4W }),
+    });
+    const json = response.json();
+    console.log(json);
+fetchData()
+    
+  }
 
+  const handleClick=(e)=>{
+    e.preventDefault();
+    editCust(data1._id,data.location,data.address,data.latitude,data.longitude,data.twoWheeler,data.fourWheeler)
+refClose.current.click()
+  //  addNote(note.title,note.description,note.tag);
+}
+
+  const updateCust=(cust)=>{
+    ref.current.click()
+
+    setData({ location:cust.name,address:cust.address,latitude:cust.latitude,longitude:cust.longitude,twoWheeler:cust.slots2W,fourWheeler:cust.slots4W })
+    setData1(cust)
+     }
+     const ref = useRef(null)
+     const refClose=useRef(null)
   return (
+    <>
+
+<button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" ref={ref} data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
+<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Edit Location</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" ref={refClose} aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+      <form>
+      <div className="col-12">
+    <label htmlFor="location" className="form-label">Location</label>
+    <input type="text" className="form-control" id="location" name='location' htmlFor="location" value={data.location}  onChange={onChange} />
+  </div>
+  
+  <div className="col-12">
+    <label htmlFor="address" className="form-label">Address</label>
+    <input type="text" className="form-control" id="address" name='address' htmlFor="address" onChange={onChange} value={data.address} placeholder="1234 Main St"/>
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="latitude" className="form-label">Latitude</label>
+    <input type="text" className="form-control"   htmlFor="latitude" name='latitude' onChange={onChange} value={data.latitude} id="latitude" />
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="longitude" className="form-label">Longitude</label>
+    <input type="text" className="form-control" htmlFor="longitude" name='longitude' onChange={onChange} value={data.longitude} id="longitude"/>
+  </div>
+  <div className="col-md-2">
+    <label htmlFor="twoWheeler" className="form-label">SLots for 2 wheelers</label>
+    <input type="number" className="form-control" htmlFor="twoWheeler" name='twoWheeler' onChange={onChange} value={data.twoWheeler} id="twoWheeler"/>
+  </div>
+
+  <div className="col-md-2">
+    <label htmlFor="fourWheeler" className="form-label">SLots for 4 wheelers</label>
+    <input type="number" className="form-control" htmlFor="fourWheeler" name='fourWheeler' onChange={onChange} value={data.fourWheeler} id="fourWheeler"/>
+  </div>
+ 
+  
+      </form>
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary" onClick={handleClick}>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <div className='pic'>
     <div className='container' >
         <form className="row g-3" onSubmit={handleSubmit}>
@@ -190,6 +275,8 @@ fetchData()
                   slots2W={element.slots2W}
                   slots4W={element.slots4W}
                   fetchData={fetchData}
+                  updateCust={updateCust}
+                  element={element}
                 />
               </tr>
             );
@@ -198,5 +285,6 @@ fetchData()
       </table>
 </div>
 </div>
+</>
   )
 }

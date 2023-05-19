@@ -88,7 +88,7 @@ searchLoc(null);
   };
 
   return (
-    <div className="" style={{ width: "100%", backgroundColor:'	#6387A6' ,overflow:'auto'}}>
+    <div className="" style={{ width: "100%", backgroundColor:'	#6387A6' ,height:'100vh',overflow:'auto'}}>
       <div
         className=""
         style={{

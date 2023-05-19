@@ -214,7 +214,7 @@ function BookingSystem(props) {
           </div>
 
           <div style={{ paddingBottom: "9px" }}>
-            <label>Car Type:</label> <br />
+            <label>Vehicle Type:</label> <br />
             {location.state.slots2W !== null ? (
               <>
                 <input

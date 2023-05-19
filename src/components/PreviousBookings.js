@@ -32,7 +32,8 @@ export default function PreviousBookings() {
     <div style={{backgroundColor:'#6387A6',height:'100vh',overflow:'auto'}}>
     <div className='container' style={{paddingTop:'2cm',}}>
   <div className="row">
-    {data.map((element) => {
+    { data.success===false?<><h5>No Bookings Yet</h5></>:
+    data.map((element) => {
       return (
               <div className="col-md-4" key={element._id}>
               

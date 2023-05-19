@@ -16,13 +16,12 @@ function AdminLocationItem(props) {
     console.log(parseData);
   }
 
-const updateCust=()=>{
-  
-}
+
 
   return (
     
         <>
+        
       <th scope="row">{props.hash}</th>
       <td>{props.name}</td>
       <td>{props.address}</td>
@@ -35,7 +34,7 @@ const updateCust=()=>{
         <i className="fa-solid fa-trash mx-2" onClick={()=>deleteCust(props._id)}></i>
       </td>
       <td>
-      <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{updateCust(props._id)}}></i>
+      <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{props.updateCust(props.element)}}></i>
       </td>
     </>
     

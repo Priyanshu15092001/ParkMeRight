@@ -1,19 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 export default function MyBookings() {
     const navigate = useNavigate()
     
     // const{loc="",locId="",bookingId="",checkIn="",duration=0,vehicleType="",rate=0,transactionId="",payment=false}=state!==null?state:{};
-   
+  const [count,setCount]=useState(0)
+   const d=new Date()
     useEffect(() => {
         if(!localStorage.getItem("token"))
        { navigate("/");}
     
       console.log(sessionStorage.getItem("payment"));
-         
-    }, [])
-   
+      if(sessionStorage.getItem("checkIn")){
+      const time=sessionStorage.getItem("checkIn");
+      console.log(time);
+      
+      const hr= time.substring(0, time.indexOf(':'));
+      const min=time.substring(time.indexOf(':')+1,time.length);
+      const interval=setInterval(() => {
+        sessionStorage.clear();
+        setCount(count+1)
+        // navigate("/MyBookings")
+      },( ((hr-d.getHours()*60)+min-d.getMinutes())*60*1000));
+    return () => clearInterval(interval);
+
+    }
+    }, [count]);
+  
+
 
 
     const initiateRefund = async () => {
